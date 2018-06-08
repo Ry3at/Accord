@@ -1,0 +1,42 @@
+﻿<Controls:MetroWindow x:Class="Accord.Views.WinMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Accord.Views"
+        mc:Ignorable="d"
+        WindowTitleBrush="Black"
+        FontFamily="{DynamicResource ResourceKey=Default_Font}"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="WinMain" Height="450" Width="800">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Controls:MetroTabControl TabStripPlacement="Left"
+                                  Controls:TabControlHelper.IsUnderlined="True"
+                                  Controls:TabControlHelper.Underlined="TabPanel"
+                                  SelectedIndex="1">
+            <Controls:MetroTabItem IsEnabled="False">
+                <TabItem.Header>
+                    <TextBlock HorizontalAlignment="Center">User Profile Section</TextBlock>
+                </TabItem.Header>
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem Header="صفحه اصلی" Padding="10">
+                
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem Header="برگزیده ها" Padding="10">
+                
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem Header="تنظیمات" Padding="10">
+                
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem Header="درباره ما" Padding="10">
+                
+            </Controls:MetroTabItem>
+            
+        </Controls:MetroTabControl>
+        
+    </Grid>
+</Controls:MetroWindow>
