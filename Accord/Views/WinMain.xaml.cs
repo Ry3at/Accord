@@ -22,6 +22,7 @@ namespace Accord.Views
         public WinMain()
         {
             InitializeComponent();
+            userNameField.Text += App._user.UserName;
         }
     }
 }

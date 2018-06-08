@@ -66,9 +66,7 @@ namespace Accord
 
                 int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
                 if (count == 1)
-                {
-                    MainWindow dashboard = new MainWindow();
-
+                { 
                     //Get user info from database
                     storedProcedure = "getUserInfo";
                     sqlCmd = new SqlCommand(storedProcedure, sqlCon);
@@ -86,11 +84,12 @@ namespace Accord
                         App._user.Email = (string)reader["Email"];
                         App._user.PhoneNumber = (string)reader["PhoneNumber"];
                         App._user.RegistrationDate = (DateTime)reader["RegisteraionDate"];
+                        //Profile Image ...
                     }
 
-                    MessageBox.Show($"{App._user.UserID}\n{App._user.UserName}\n{App._user.FirstName}\n{App._user.LastName}\n");
-
-                    dashboard.Show();
+                // MessageBox.Show($"{App._user.UserID}\n{App._user.UserName}\n{App._user.FirstName}\n{App._user.LastName}\n");
+                Accord.Views.WinMain Dashboard = new Views.WinMain();
+                Dashboard.Show();
                     this.Close();
                 }
 

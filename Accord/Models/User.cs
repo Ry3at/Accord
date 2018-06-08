@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace Accord.Models
 {
@@ -15,6 +16,7 @@ namespace Accord.Models
         private string email;
         private string phoneNumber;
         private DateTime registrationDate;
+        private BitmapImage profileImage;
 
         public int UserID { get => userID; set => userID = value; }
         public string UserName { get => userName; set => userName = value; }
@@ -23,5 +25,6 @@ namespace Accord.Models
         public string Email { get => email; set => email = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public DateTime RegistrationDate { get => registrationDate; set => registrationDate = value; }
+        public BitmapImage ProfileImage { get => profileImage; set => profileImage = value; }
     }
 }

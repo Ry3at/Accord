@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Accord"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-             StartupUri="Views/WinMain.xaml">
+             StartupUri="Views/WinLoginScreen.xaml">
     <Application.Resources>
 
         <ResourceDictionary>
