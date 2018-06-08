@@ -67,6 +67,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\User.cs" />
+    <Compile Include="Views\UserControls\Slider.xaml.cs">
+      <DependentUpon>Slider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WinLoginScreen.xaml.cs">
       <DependentUpon>WinLoginScreen.xaml</DependentUpon>
     </Compile>
