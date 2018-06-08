@@ -24,13 +24,13 @@ namespace Accord.Views.UserControls
     {
         private User _user;
 
-        private User User
+        public User User
         {
             get => _user;
             set
             {
                 _user = value;
-                TbName.Text = value.FirstName;
+                TbName.Text = value.FirstName + "، خوش آمدید!";
                 Image.Source = value.ProfileImage;
             }
         }
