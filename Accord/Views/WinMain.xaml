@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Accord.Views"
+        xmlns:myControl="clr-namespace:Accord.Views.UserControls"
         mc:Ignorable="d"
         WindowTitleBrush="Black"
         FontFamily="{DynamicResource ResourceKey=Default_Font}"
@@ -17,23 +18,39 @@
         <Controls:MetroTabControl TabStripPlacement="Left"
                                   Controls:TabControlHelper.IsUnderlined="True"
                                   Controls:TabControlHelper.Underlined="TabPanel"
-                                  SelectedIndex="1">
+                                  SelectedIndex="1"
+                                  FontFamily="B Nazanin">
             <Controls:MetroTabItem IsEnabled="False">
                 <TabItem.Header>
                     <TextBlock HorizontalAlignment="Center">User Profile Section</TextBlock>
                 </TabItem.Header>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Header="صفحه اصلی" Padding="10">
-                
+
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Header="برگزیده ها" Padding="10">
                 
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Header="تنظیمات" Padding="10">
+                <Grid>
+                    <StackPanel Margin="20">
+                        <TextBlock Text="تنظیمات کاربری" FontSize="18"/>
+                        <Separator></Separator>
+                        <TextBlock Text="در این بخش میتوانید اطلاعات کاربری مربوط به خود را ویرایش و بروز رسانی کنید:" FontSize="16" />
+                        
+                    </StackPanel>
+                </Grid>
                 
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Header="درباره ما" Padding="10">
-                
+                <Border Background="{DynamicResource ResourceKey=TransparentWhiteBrush}">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="100 0">
+                        <Image Source="/Accord;component/Asset/Image/30 morgh3.png" Height="200" Width="200"></Image>
+                        <Separator Width="200" Height="25"></Separator>
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Justify" FontSize="14"
+                        Text="برنامه موسیقی آکورد، در سال 1397 توسط گروه توسعه دهندگان برجسته (®EminentDevs) به صورت آزمایشی توسعه یافت تا بتواند به صورت بومی سازه شده، محتوای موسیقی رسمی ایرانی را با رعایت حقوق صاحبان اثر، در اختیار همه هموطنان عزیز ایران قرار دهد. امید است این برنامه همراهی همیشگی در لحظات زندگی یکایک شما کاربران عزیز باشد."/>
+                    </StackPanel>
+                </Border>
             </Controls:MetroTabItem>
             
         </Controls:MetroTabControl>

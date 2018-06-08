@@ -66,6 +66,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\User.cs" />
     <Compile Include="Views\UserControls\Slider.xaml.cs">
       <DependentUpon>Slider.xaml</DependentUpon>
     </Compile>
@@ -134,6 +135,7 @@
     <Resource Include="Asset\Image\music_concert-wallpaper-1920x1080.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Asset\Image\0_52096_22bdcbf4_XXXL.png" />
     <Content Include="Asset\Song\1-03 Ezio%27s Family.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

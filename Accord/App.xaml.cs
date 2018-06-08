@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accord.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace Accord
     /// </summary>
     public partial class App : Application
     {
+        public static User _user = new User();
     }
 }
