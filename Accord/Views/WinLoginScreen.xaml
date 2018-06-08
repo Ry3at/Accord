@@ -1,0 +1,39 @@
+﻿<Controls:MetroWindow x:Class="Accord.LoginScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Accord"
+        BorderThickness="0"
+        mc:Ignorable="d"
+        FontFamily="IRANSans, Century Gothic"
+        WindowTitleBrush="Black"
+        TitleAlignment="Center"
+        Title="آکورد - ورود" MinHeight="720" MinWidth="400" Height="720" Width="1280" FontSize="14" Icon="/Accord;component/Asset/Image/ms-icon-310x310.png" >
+    <Grid Margin="0" Height="auto">
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="/Accord;component/Asset/Image/music_concert-wallpaper-1920x1080.jpg"></ImageBrush>
+        </Grid.Background>
+        <Border Background="Black" MaxHeight="700" Height="auto" Width="350" Opacity="0.75">
+            <StackPanel FocusManager.FocusedElement="{Binding ElementName=txtUsername}" Margin="20" Height="auto">
+                <Image Height="200" Width="auto" Source="/Accord;component/Asset/Image/30 morgh3.png"></Image>
+                <Label FlowDirection="RightToLeft" Content="به آکورد خوش آمدید!" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Foreground="White" TextAlignment="Center" Margin="10"  FlowDirection="RightToLeft">لذت بی نهایت از موسیقی، هر لحظه، در هر مکان...</TextBlock>
+                <Separator></Separator>
+                <Label FlowDirection="RightToLeft" Content="نام کاربری:" Foreground="White"></Label>
+                <TextBox CaretBrush="White" BorderThickness="0" ToolTip="نام کاربری اختصاص داده شده به شما" MaxLength="20" Name="txtUsername" Background="#FF1C1515" Foreground="White" FontSize="18"></TextBox>
+                <Label FlowDirection="RightToLeft" Content="کلمه عبور:" Foreground="White"></Label>
+                <PasswordBox CaretBrush="White" BorderThickness="0" ToolTip="کلمه عبور مربوط به حساب کاربری شما" MaxLength="20" Name="txtPassword" Background="#FF1C1515" Foreground="White" FontSize="18"></PasswordBox>
+                <Button FontFamily="IRANSans" Name="btnSubmit" Click="btnSubmit_ClickAsync" IsDefault="True" Background="Gray" Foreground="White" FontSize="18" Padding="0, 5" Margin="80, 20">ورود</Button>
+                <TextBlock TextWrapping="Wrap" Foreground="White" TextAlignment="Center"  FlowDirection="RightToLeft">در صورت فراموش کردن نام کاربری یا کلمه عبور، با Info@Accord.com در ارتباط باشید.</TextBlock>
+                <WrapPanel VerticalAlignment="Bottom"  Margin="0,20,0,0"  Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Padding="7.5,0" Foreground="White" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave">درباره ما</TextBlock>
+                    <TextBlock Padding="7.5,0" Foreground="White" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave">تماس با ما</TextBlock>
+                    <TextBlock Padding="7.5,0" Foreground="White" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave">حریم شخصی</TextBlock>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+        <Label Foreground="White" Padding="10" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="11">Copyright© 2018 EminentDevs®. All rights reserved.</Label>
+    </Grid>
+</Controls:MetroWindow>
