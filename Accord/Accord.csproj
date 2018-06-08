@@ -111,7 +111,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Asset\Song\" />
     <Folder Include="Views\UserControls\" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +118,9 @@
     <Resource Include="Asset\Image\30 morgh3.png" />
     <Resource Include="Asset\Image\ms-icon-310x310.png" />
     <Resource Include="Asset\Image\music_concert-wallpaper-1920x1080.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Asset\Song\1-03 Ezio%27s Family.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
