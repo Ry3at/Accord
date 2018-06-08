@@ -68,6 +68,28 @@ namespace Accord
                 if (count == 1)
                 {
                     MainWindow dashboard = new MainWindow();
+
+                    //Get user info from database
+                    storedProcedure = "getUserInfo";
+                    sqlCmd = new SqlCommand(storedProcedure, sqlCon);
+                    sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@Username", txtUsername.Text);
+                    sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Password);
+
+                    SqlDataReader reader = sqlCmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        App._user.UserID = (int)reader["UserID"];
+                        App._user.UserName = (string)reader["Username"];
+                        App._user.FirstName = (string)reader["FirstName"];
+                        App._user.LastName = (string)reader["LastName"];
+                        App._user.Email = (string)reader["Email"];
+                        App._user.PhoneNumber = (string)reader["PhoneNumber"];
+                        App._user.RegistrationDate = (DateTime)reader["RegisteraionDate"];
+                    }
+
+                    MessageBox.Show($"{App._user.UserID}\n{App._user.UserName}\n{App._user.FirstName}\n{App._user.LastName}\n");
+
                     dashboard.Show();
                     this.Close();
                 }
