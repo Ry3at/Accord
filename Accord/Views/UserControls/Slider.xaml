@@ -6,23 +6,27 @@
              xmlns:local="clr-namespace:Accord.Views.UserControls"
              xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="800" Background="Black">
+             d:DesignHeight="100" d:DesignWidth="800" Background="{DynamicResource WindowBackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition />
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
-        <Button Name="BtnScrollBack" Grid.Column="0" Style="{DynamicResource ChromelessButtonStyle}">
-            <icons:PackIconMaterial Kind="ArrowLeft" Foreground="White" />
+        <Button Name="BtnScrollBack" Grid.Column="0" 
+                Padding="5"
+                Style="{DynamicResource ChromelessButtonStyle}">
+            <icons:PackIconMaterial Kind="ArrowLeft" Foreground="{DynamicResource TextBrush}" />
         </Button>
         <ScrollViewer Name="Sv" Grid.Column="1"
                       VerticalScrollBarVisibility="Hidden"
                       HorizontalScrollBarVisibility="Hidden">
             <ContentPresenter />
         </ScrollViewer>
-        <Button Name="BtnScrollFront" Grid.Column="2" Style="{DynamicResource ChromelessButtonStyle}">
-            <icons:PackIconMaterial Kind="ArrowRight" Foreground="White" />
+        <Button Name="BtnScrollFront" Grid.Column="2" 
+                Padding="5"
+                Style="{DynamicResource ChromelessButtonStyle}">
+            <icons:PackIconMaterial Kind="ArrowRight" Foreground="{DynamicResource TextBrush}" />
         </Button>
     </Grid>
 </UserControl>
