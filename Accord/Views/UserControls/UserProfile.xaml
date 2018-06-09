@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="11" />
         </Grid.RowDefinitions>
-        <Image Name="Image" 
+        <Image Name="Image" Margin="10 20 10 10"
                Width="{Binding Path=(Image.Height)}"
                MaxHeight="150" MinHeight="150"/>
         <TextBlock HorizontalAlignment="Center" Name="TbName" Grid.Row="1" />

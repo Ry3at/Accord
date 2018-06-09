@@ -28,7 +28,7 @@ namespace Accord.Models
         }
     
         public virtual DbSet<tblUser> tblUsers { get; set; }
-        public virtual DbSet<tblTempSong> tblTempSongs { get; set; }
+        public virtual DbSet<tblSong> tblSongs { get; set; }
     
         public virtual ObjectResult<getUserInfo_Result> getUserInfo(string username, string password)
         {

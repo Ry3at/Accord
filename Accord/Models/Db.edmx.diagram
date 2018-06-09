@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a12422b9758c4ac9a5130ad63cd19fd1" Name="Diagram1">
         <EntityTypeShape EntityType="AccordModel.tblUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AccordModel.tblTempSong" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccordModel.tblSong" Width="1.5" PointX="3.375" PointY="1.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

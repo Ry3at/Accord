@@ -4,16 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AccordModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Accord.dbo.tblTempSong' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblTempSong">
+    <Schema Namespace="AccordModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblSong">
           <Key>
-            <PropertyRef Name="MID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="MID" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SongName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArtistName" Type="nvarchar" MaxLength="50" />
           <Property Name="SongFile" Type="varbinary(max)" />
+          <Property Name="AddDate" Type="datetime" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -27,7 +27,7 @@ warning 6002: The table/view 'Accord.dbo.tblTempSong' does not have a primary ke
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="11" />
           <Property Name="RegisteraionDate" Type="datetime" />
-          <Property Name="ProfileImage" Type="image" />
+          <Property Name="ProfileImage" Type="varbinary(max)" />
         </EntityType>
         <Function Name="getUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Username" Type="varchar" Mode="In" />
@@ -38,17 +38,10 @@ warning 6002: The table/view 'Accord.dbo.tblTempSong' does not have a primary ke
           <Parameter Name="Password" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="AccordModelStoreContainer">
+          <EntitySet Name="tblSong" EntityType="Self.tblSong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblTempSong" EntityType="Self.tblTempSong" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblTempSong].[MID] AS [MID], 
-    [tblTempSong].[SongName] AS [SongName], 
-    [tblTempSong].[SongFile] AS [SongFile]
-    FROM [dbo].[tblTempSong] AS [tblTempSong]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AccordModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -66,17 +59,8 @@ warning 6002: The table/view 'Accord.dbo.tblTempSong' does not have a primary ke
           <Property Name="RegisteraionDate" Type="DateTime" Precision="3" />
           <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="tblTempSong">
-          <Key>
-            <PropertyRef Name="MID" />
-          </Key>
-          <Property Name="MID" Type="Int32" Nullable="false" />
-          <Property Name="SongName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SongFile" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityContainer Name="AccordEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
-          <EntitySet Name="tblTempSongs" EntityType="Self.tblTempSong" />
           <FunctionImport Name="getUserInfo" ReturnType="Collection(AccordModel.getUserInfo_Result)">
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
@@ -85,6 +69,7 @@ warning 6002: The table/view 'Accord.dbo.tblTempSong' does not have a primary ke
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="tblSongs" EntityType="AccordModel.tblSong" />
         </EntityContainer>
         <ComplexType Name="getUserInfo_Result">
           <Property Type="Int32" Name="UserID" Nullable="false" />
@@ -95,6 +80,16 @@ warning 6002: The table/view 'Accord.dbo.tblTempSong' does not have a primary ke
           <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="11" />
           <Property Type="DateTime" Name="RegisteraionDate" Nullable="true" Precision="23" />
         </ComplexType>
+        <EntityType Name="tblSong">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SongName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArtistName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SongFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AddDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -116,15 +111,6 @@ warning 6002: The table/view 'Accord.dbo.tblTempSong' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblTempSongs">
-            <EntityTypeMapping TypeName="AccordModel.tblTempSong">
-              <MappingFragment StoreEntitySet="tblTempSong">
-                <ScalarProperty Name="MID" ColumnName="MID" />
-                <ScalarProperty Name="SongName" ColumnName="SongName" />
-                <ScalarProperty Name="SongFile" ColumnName="SongFile" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="getUserInfo" FunctionName="AccordModel.Store.getUserInfo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="AccordModel.getUserInfo_Result">
@@ -139,6 +125,17 @@ warning 6002: The table/view 'Accord.dbo.tblTempSong' does not have a primary ke
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="userLogin" FunctionName="AccordModel.Store.userLogin" />
+          <EntitySetMapping Name="tblSongs">
+            <EntityTypeMapping TypeName="AccordModel.tblSong">
+              <MappingFragment StoreEntitySet="tblSong">
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="SongFile" ColumnName="SongFile" />
+                <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+                <ScalarProperty Name="SongName" ColumnName="SongName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

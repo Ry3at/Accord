@@ -10,6 +10,9 @@
         FontFamily="{DynamicResource ResourceKey=Default_Font}"
         WindowTitleBrush="Black"
         TitleAlignment="Center"
+        WindowState="Maximized"
+        IgnoreTaskbarOnMaximize="True"
+        ShowTitleBar="False"
         Title="آکورد - ورود" MinHeight="720" MinWidth="400" Height="720" Width="1280" FontSize="14" Icon="/Accord;component/Asset/Image/ms-icon-310x310.png" >
     <Grid Margin="0" Height="auto">
         <Grid.Background>

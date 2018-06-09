@@ -15,6 +15,8 @@ using System.Data.SqlClient;
 using System.IO;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using NHotkey.Wpf;
+using NHotkey;
 
 namespace Accord
 {
@@ -27,6 +29,7 @@ namespace Accord
         {
             InitializeComponent();
 
+
             //byte[] bytes = File.ReadAllBytes(@"C:\Users\Etern\source\repos\Accord\Accord\Asset\Image\photo_2017-11-23_16-52-57 (3).jpg");
             //SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost; Initial Catalog=Accord; Integrated Security=True; ");
             //SqlCommand cmd = new SqlCommand();
@@ -38,6 +41,8 @@ namespace Accord
             //sqlCon.Close();
 
         }
+
+        
 
         private async void btnSubmit_ClickAsync(object sender, RoutedEventArgs e)
         {

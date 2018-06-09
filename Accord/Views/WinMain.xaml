@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         WindowTitleBrush="Black"
         WindowState="Maximized"
@@ -11,6 +12,10 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:usercontrols="clr-namespace:Accord.Views.UserControls"
                       Title="آکورد - داشبورد" Height="500" MinHeight="500" Width="800" Icon="/Accord;component/Asset/Image/ms-icon-310x310.png">
+    <!--<Controls:MetroWindow.InputBindings>
+        <KeyBinding Gesture="Space" Command="{Binding Pp}"
+                    HotkeyManager.RegisterGlobalHotkey="True" />
+    </Controls:MetroWindow.InputBindings>-->
     <Grid FlowDirection="RightToLeft">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -28,13 +33,44 @@
                 </TabItem.Header>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Header="صفحه اصلی" Padding="10">
-
+                <StackPanel>
+                    <TextBlock Text="آخرین آهنگ ها" HorizontalAlignment="Center" Foreground="Gold" FontSize="20"></TextBlock>
+                    <Separator></Separator>
+                    <DataGrid AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                        Name="latestSongs"
+                        HorizontalAlignment="Center"
+                        Width="auto"
+                        Style="{DynamicResource AzureDataGrid}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Id}" Width="100" Header="شناسه آهنگ"/>
+                            <DataGridTextColumn Binding="{Binding SongName}" Width="100" Header="نام آهنگ"/>
+                            <DataGridTextColumn Binding="{Binding ArtistName}" Width="100" Header="نام خواننده"/>
+                            <DataGridTextColumn Binding="{Binding AddDate}" Width="100" Header="تاریخ ثبت"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            Style="{DynamicResource ChromelessButtonStyle}"
+                                            Width="30" Height="30"
+                                            Click="PlayButton_Click"
+                                            >
+                                            <icons:PackIconMaterial Kind="PlayCircleOutline" />
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
             </Controls:MetroTabItem>
-            <Controls:MetroTabItem Header="برگزیده ها" Padding="10">
+            <!--<Controls:MetroTabItem Header="برگزیده ها" Padding="10">
                 <Grid>
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" Text="این گزینه به زودی اضافه خواهد شد..."></TextBlock>
                 </Grid>
-            </Controls:MetroTabItem>
+            </Controls:MetroTabItem>-->
             <Controls:MetroTabItem Header="تنظیمات" Padding="10" MouseUp="SettingTabItem_MouseUp">
                 <Grid>
                     <StackPanel Margin="20">
@@ -45,7 +81,12 @@
                         <TextBlock Margin="5" FontSize="14" Text="نام کاربری (نام کاربری شما غیر قابل تغییر است): "/>
                         <TextBox Foreground="Gold" BorderThickness="0" HorizontalAlignment="Left" Width="100" Name="userNameField" IsReadOnly="True"></TextBox>
                         <TextBlock Margin="5" FontSize="14" Text="تاریخ عضویت در سیستم: "/>
-                        <TextBox Foreground="Gold" BorderThickness="0" HorizontalAlignment="Left" Width="100" Name="registrationDateField" IsReadOnly="True"></TextBox>
+                        <TextBox Foreground="Gold" BorderThickness="0" HorizontalAlignment="Left" Name="registrationDateField" IsReadOnly="True"></TextBox>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Name="profilePicAddress" Content="آپلود عکس" Width="130" Margin="0 0 5.2 0"
+                                    Click="profilePicAddress_Click" />
+                            <Image Name="ProfileThumb" Width="24.8" />
+                        </StackPanel>
                         <TextBlock FontSize="14">نام:</TextBlock>
                         <TextBox Controls:TextBoxHelper.UseFloatingWatermark="True" Controls:TextBoxHelper.Watermark="تا 20 کاراکتر" MaxLength="20" Name="fNameField" Foreground="Gold" Width="160" HorizontalAlignment="Left" Margin="0,0,0,10" />
                         <TextBlock FontSize="14">نام خانوادگی:</TextBlock>
@@ -58,12 +99,11 @@
                             <Button Name="btnSubmit" Width="75" Margin="0 0 5 0" Click="btnSubmit_Click" >اعمال تغییرات</Button>
                             <Button Name="btnCancel" Width="75" Margin="5 0 0 0" Click="btnCancel_Click" >صرف نظر</Button>
                         </StackPanel>
-                        <TextBlock Name="validationSection"></TextBlock>
                     </StackPanel>
                 </Grid>
 
             </Controls:MetroTabItem>
-            <Controls:MetroTabItem Header="درباره ما" Padding="10">
+            <Controls:MetroTabItem Header="درباره ما" Padding="10" >
                 <Border Background="{DynamicResource ResourceKey=TransparentWhiteBrush}">
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="100 0">
                         <Image Source="/Accord;component/Asset/Image/30 morgh3.png" Height="200" Width="200"></Image>
@@ -79,8 +119,52 @@
 
         </Controls:MetroAnimatedTabControl>
         <MediaElement Name="me" LoadedBehavior="Manual" Grid.Row="2" />
-        <Grid Grid.Row="1">
-            <TextBlock>sadasdasd</TextBlock>
+        <Grid Grid.Row="1" Margin="0 10" Background="{DynamicResource ControlBackgroundBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid Margin="15 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Name="TbSongName"  Grid.Row="0" Text="نام موسیقی" Foreground="gold" />
+                <TextBlock Name="TbArtistName" Grid.Row="1" Text="" />
+            </Grid>
+            <Grid Grid.Column="1" FlowDirection="LeftToRight">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Slider 
+                        Cursor="Hand" 
+                        ValueChanged="AudioSlider_ValueChanged"
+                        IsMoveToPointEnabled="True" 
+                        Value="100" 
+                        Margin="20, 0, 20, 0" 
+                        Name="AudioSlider" 
+                        Grid.Column="0"
+                        HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Center" 
+                        Visibility="Visible"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" 
+                            VerticalAlignment="Center"
+                            
+                            >
+                    <TextBlock Name="CuTime" Text="00:00" Foreground="White" />
+                    <TextBlock Text=" / " Foreground="White" />
+                    <TextBlock Name="DuTime" Text="88:88" Foreground="White" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Button Name="BtnPp" Style="{DynamicResource ChromelessButtonStyle}"
+                        Width="40" Click="BtnPp_Click"
+                        >
+                    <icons:PackIconMaterial Name="iconPp" Kind="Pause" />
+                </Button>
+            </Grid>
         </Grid>
     </Grid>
 </Controls:MetroWindow>

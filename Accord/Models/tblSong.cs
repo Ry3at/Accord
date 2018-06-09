@@ -12,10 +12,12 @@ namespace Accord.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblTempSong
+    public partial class tblSong
     {
-        public int MID { get; set; }
+        public int Id { get; set; }
         public string SongName { get; set; }
+        public string ArtistName { get; set; }
         public byte[] SongFile { get; set; }
+        public Nullable<System.DateTime> AddDate { get; set; }
     }
 }
