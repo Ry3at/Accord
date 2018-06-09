@@ -16,7 +16,7 @@
         <Image Name="Image" 
                Width="{Binding Path=(Image.Height)}"
                MaxHeight="150" MinHeight="150"/>
-        <TextBlock Name="TbName" Grid.Row="1" />
+        <TextBlock HorizontalAlignment="Center" Name="TbName" Grid.Row="1" />
         <Border Background="{DynamicResource TextBrush}" Grid.Row="2" Margin="0 5" />
     </Grid>
 </UserControl>

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Accord"
         BorderThickness="0"
         mc:Ignorable="d"
-        FontFamily="IRANSans, Century Gothic"
+        FontFamily="{DynamicResource ResourceKey=Default_Font}"
         WindowTitleBrush="Black"
         TitleAlignment="Center"
         Title="آکورد - ورود" MinHeight="720" MinWidth="400" Height="720" Width="1280" FontSize="14" Icon="/Accord;component/Asset/Image/ms-icon-310x310.png" >
@@ -34,6 +34,6 @@
                 </WrapPanel>
             </StackPanel>
         </Border>
-        <Label Foreground="White" Padding="10" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="11">Copyright© 2018 EminentDevs®. All rights reserved.</Label>
+        <TextBlock Foreground="White" Padding="10" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="11">Copyright© 2018 EminentDevs®. All rights reserved.</TextBlock>
     </Grid>
 </Controls:MetroWindow>

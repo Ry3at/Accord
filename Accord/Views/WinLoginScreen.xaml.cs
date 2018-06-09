@@ -27,13 +27,11 @@ namespace Accord
         {
             InitializeComponent();
 
-            //byte[] bytes = File.ReadAllBytes(@"C:\Users\Etern\source\repos\Accord\Accord\Test Songs\1-03 Ezio's Family.mp3");
+            //byte[] bytes = File.ReadAllBytes(@"C:\Users\Etern\source\repos\Accord\Accord\Asset\Image\photo_2017-11-23_16-52-57 (3).jpg");
             //SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost; Initial Catalog=Accord; Integrated Security=True; ");
             //SqlCommand cmd = new SqlCommand();
-            //cmd.CommandText = "insert into tblTempSong(MID, SongName, SongFile) values (@MID, @SongName, @SongFile)";
-            //cmd.Parameters.AddWithValue("@MID", 1);
-            //cmd.Parameters.AddWithValue("@SongName", "testname");
-            //cmd.Parameters.AddWithValue("@SongFile", bytes);
+            //cmd.CommandText = "UPDATE tblUser SET ProfileImage = ISNULL(@profileImage, ProfileImage) WHERE UserID = 1";
+            //cmd.Parameters.AddWithValue("@profileImage", bytes);
             //cmd.Connection = sqlCon;
             //sqlCon.Open();
             //cmd.ExecuteNonQuery();
@@ -85,6 +83,27 @@ namespace Accord
                         App._user.PhoneNumber = (string)reader["PhoneNumber"];
                         App._user.RegistrationDate = (DateTime)reader["RegisteraionDate"];
                         //Profile Image ...
+                        byte[] imageBytes = null;
+                        if (reader["ProfileImage"] != System.DBNull.Value)
+                        {
+                            imageBytes = (byte[])reader["ProfileImage"];
+                        } 
+                        if (imageBytes != null)
+                        {
+                            var image = new BitmapImage();
+                            using (var mem = new MemoryStream(imageBytes))
+                            {
+                                mem.Position = 0;
+                                image.BeginInit();
+                                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                                image.CacheOption = BitmapCacheOption.OnLoad;
+                                image.UriSource = null;
+                                image.StreamSource = mem;
+                                image.EndInit();
+                            }
+                            image.Freeze();
+                            App._user.ProfileImage = image;
+                        }
                     }
 
                 // MessageBox.Show($"{App._user.UserID}\n{App._user.UserName}\n{App._user.FirstName}\n{App._user.LastName}\n");
