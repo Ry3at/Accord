@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         WindowTitleBrush="Black"
+        WindowState="Maximized"
         FontFamily="{DynamicResource ResourceKey=Default_Font}"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Title="WinMain" Height="450" Width="800">
+                      xmlns:usercontrols="clr-namespace:Accord.Views.UserControls"
+                      Title="WinMain" Height="500" MinHeight="500" Width="800">
     <Grid FlowDirection="RightToLeft">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,14 +21,14 @@
                                   FontFamily="B Nazanin">
             <Controls:MetroTabItem IsEnabled="False">
                 <TabItem.Header>
-                    <TextBlock HorizontalAlignment="Center">User Profile Section</TextBlock>
+                    <usercontrols:UserProfile x:Name="UserProfileViewer" />
                 </TabItem.Header>
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Header="صفحه اصلی" Padding="10">
 
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Header="برگزیده ها" Padding="10">
-                
+
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Header="تنظیمات" Padding="10">
                 <Grid>
@@ -48,11 +50,11 @@
                         <StackPanel Orientation="Horizontal" Margin="0 5">
                             <Button Width="75" Margin="0 0 5 0" >اعمال تغییرات</Button>
                             <Button Width="75" Margin="5 0 0 0" >صرف نظر</Button>
-                            
+
                         </StackPanel>
                     </StackPanel>
                 </Grid>
-                
+
             </Controls:MetroTabItem>
             <Controls:MetroTabItem Header="درباره ما" Padding="10">
                 <Border Background="{DynamicResource ResourceKey=TransparentWhiteBrush}">
@@ -64,8 +66,11 @@
                     </StackPanel>
                 </Border>
             </Controls:MetroTabItem>
-            
+
         </Controls:MetroTabControl>
-        
+        <MediaElement Name="me" LoadedBehavior="Manual" Grid.Row="2" />
+        <Grid Grid.Row="1">
+            <TextBlock>sadasdasd</TextBlock>
+        </Grid>
     </Grid>
 </Controls:MetroWindow>

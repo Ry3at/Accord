@@ -25,6 +25,13 @@ namespace Accord.Models
         public string Email { get => email; set => email = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public DateTime RegistrationDate { get => registrationDate; set => registrationDate = value; }
-        public BitmapImage ProfileImage { get => profileImage; set => profileImage = value; }
+        public BitmapImage ProfileImage
+        {
+            get
+            {   
+                return profileImage ?? new BitmapImage(new Uri(@"\Accord;component\Asset\Image\avatar615_0_NEW.png", UriKind.Relative));
+            }
+            set => profileImage = value;
+        }
     }
 }
